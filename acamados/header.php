@@ -1,11 +1,12 @@
+a página que dá erro é essa:
 <?php
 session_start();
 
 /*
 // Verifica se a sessão está ativa usando as variáveis corretas
 if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['nome_usuario'])) {
-     header("Location: /index.php"); // <--- CORRIGIDO AQUI TAMBÉM
-     exit();
+    header("Location: /acamados/index.php");
+    exit();
 }*/
 ?>
 <!DOCTYPE html>
@@ -19,20 +20,21 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['nome_usuario'])) {
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-                        <a class="navbar-brand" href="/dashboard/dashboard.php">Acamados</a>
+            <a class="navbar-brand" href="/acamados/dashboard/dashboard.php">Acamados</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                                                <a class="nav-link" href="/dashboard/dashboard.php">Cadastro</a>
+                        <a class="nav-link" href="/acamados/dashboard/dashboard.php">Cadastro</a>
                     </li>
                     <li class="nav-item">
-                                                <a class="nav-link" href="/pacientes/exibir_dados.php">Exibir Dados</a>
+                        <a class="nav-link" href="/acamados/pacientes/exibir_dados.php">Exibir Dados</a>
                     </li>
                 </ul>
-                                <a href="/logout.php" class="btn btn-outline-light">Sair</a>-->
+                <!--<span class="navbar-text me-2">Bem-vindo, <?php //echo htmlspecialchars($_SESSION['nome_usuario']); ?></span>
+                <a href="/acamados/logout.php" class="btn btn-outline-light">Sair</a>-->
             </div>
         </div>
     </nav>
