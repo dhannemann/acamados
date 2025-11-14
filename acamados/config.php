@@ -1,24 +1,29 @@
 <?php
-// Tenta pegar as variáveis de ambiente do Railway (forma moderna)
-$host = $_ENV['MYSQLHOST'] ?? null;
-$user = $_ENV['MYSQLUSER'] ?? null;
-$pass = $_ENV['MYSQLPASSWORD'] ?? null;
-$db_name = $_ENV['MYSQLDATABASE'] ?? null;
-$port = $_ENV['MYSQLPORT'] ?? null; // Pega a porta do Railway
+// A SOLUÇÃO MAIS SIMPLES: Ler 1 variável (DATABASE_URL)
+$db_url = $_ENV['DATABASE_URL'] ?? null;
 
-// Se não achar (para rodar no seu PC/localhost), use os valores antigos
-if (empty($host)) {
+// Se a variável existir (estamos no Railway)
+if (!empty($db_url)) {
+    $url_parts = parse_url($db_url);
+
+    $host = $url_parts['host'];
+    $user = $url_parts['user'];
+    $pass = $url_parts['pass'];
+    $db_name = ltrim($url_parts['path'], '/'); // Remove a barra "/" do início
+    $port = $url_parts['port'];
+
+} else {
+    // Se não (estamos no PC/localhost), usa o plano B
     $host = 'localhost';
     $user = 'root';
     $pass = '';
     $db_name = 'acamados';
-    $port = 3307; // A porta do seu localhost
+    $port = 3307;
 }
 
 date_default_timezone_set('America/Sao_Paulo');
 
 // Conexão
-// A linha 21 (agora) converte a porta para número
 $conn = new mysqli($host, $user, $pass, $db_name, (int)$port);
 
 if ($conn->connect_error) {
@@ -26,7 +31,6 @@ if ($conn->connect_error) {
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
-// Boa prática: Definir o charset para evitar problemas com acentos
 $conn->set_charset("utf8mb4");
 
 ?>
