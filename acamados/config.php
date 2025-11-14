@@ -1,10 +1,10 @@
 <?php
-// Tenta pegar as variáveis de ambiente do Railway
-$host = getenv('MYSQLHOST');
-$user = getenv('MYSQLUSER');
-$pass = getenv('MYSQLPASSWORD');
-$db_name = getenv('MYSQLDATABASE');
-$port = (int)getenv('MYSQLPORT'); // Converte a porta para número
+// Tenta pegar as variáveis de ambiente do Railway (forma moderna)
+$host = $_ENV['MYSQLHOST'] ?? null;
+$user = $_ENV['MYSQLUSER'] ?? null;
+$pass = $_ENV['MYSQLPASSWORD'] ?? null;
+$db_name = $_ENV['MYSQLDATABASE'] ?? null;
+$port = $_ENV['MYSQLPORT'] ?? null; // Pega a porta do Railway
 
 // Se não achar (para rodar no seu PC/localhost), use os valores antigos
 if (empty($host)) {
@@ -12,16 +12,17 @@ if (empty($host)) {
     $user = 'root';
     $pass = '';
     $db_name = 'acamados';
-    $port = 3307;
+    $port = 3307; // A porta do seu localhost
 }
 
 date_default_timezone_set('America/Sao_Paulo');
 
 // Conexão
-$conn = new mysqli($host, $user, $pass, $db_name, $port);
+// A linha 21 (agora) converte a porta para número
+$conn = new mysqli($host, $user, $pass, $db_name, (int)$port);
 
 if ($conn->connect_error) {
-    // ISSO é o que está causando sua página em branco!
+    // Se falhar, MOSTRA O ERRO para depuração
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
