@@ -21,6 +21,7 @@ date_default_timezone_set('America/Sao_Paulo');
 $conn = new mysqli($host, $user, $pass, $db_name, $port);
 
 if ($conn->connect_error) {
+    // ISSO é o que está causando sua página em branco!
     die("Erro na conexão com o banco de dados: " . $conn->connect_error);
 }
 
