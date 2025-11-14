@@ -1,6 +1,6 @@
 <?php
 // index.php
-header("Location: dashboard/dashboard.php");
+header("Location: /dashboard/dashboard.php");
 exit();
 ?>
 
@@ -46,5 +46,6 @@ session_start();
     </div>
 </body>
 </html>
+
 
 -->
