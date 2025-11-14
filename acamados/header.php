@@ -1,4 +1,3 @@
-a página que dá erro é essa:
 <?php
 session_start();
 
@@ -39,3 +38,4 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['nome_usuario'])) {
         </div>
     </nav>
     <div class="container mt-4">
+
