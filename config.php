@@ -1,9 +1,10 @@
 <?php
-// Cole os dados que o 000webhost te deu:
-$host = 'sql123.000webhost.com'; // <--- O HOST que você anotou
-$user = 'id12345_usuario_acamados'; // <--- O USUÁRIO que você anotou
-$pass = 'SuaSenhaQueVoceCriou'; // <--- A SENHA que você anotou
-$db_name = 'id12345_acamados'; // <--- O NOME DO BANCO que você anotou
+// Cole os dados que o InfinityFree te deu:
+
+$host = 'sql211.infinityfree.com'; // <--- MySQL Hostname
+$user = 'if0_40422144';            // <--- MySQL Username
+$db_name = 'if0_40422144_acamados';   // <--- MySQL Database Name
+$pass = 'da33626688'; 
 
 date_default_timezone_set('America/Sao_Paulo');
 
